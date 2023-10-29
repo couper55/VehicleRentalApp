@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("com.google.gms.google-services")
 
 }
 
@@ -43,11 +44,20 @@ dependencies {
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.10.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+    implementation("com.google.ar.sceneform:filament-android:1.17.1")
+    implementation("androidx.compose.foundation:foundation-android:1.5.4")
+    implementation("com.google.android.engage:engage-core:1.3.0")
+    implementation("com.google.firebase:firebase-auth:22.2.0")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
     implementation ("androidx.viewpager2:viewpager2:1.0.0")
     implementation ("me.relex:circleindicator:2.1.6")
+    implementation ("androidx.compose.ui:ui:1.5.4")
+    implementation ("androidx.compose.material3:material3:1.1.2")
+    implementation ("androidx.compose.ui:ui-tooling:1.5.4")
+    implementation ("org.apache.poi:poi:5.1.0")
+    implementation ("org.apache.poi:poi-ooxml:5.1.0")
 
 
 }

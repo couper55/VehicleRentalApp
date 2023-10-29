@@ -48,7 +48,7 @@
             android:layout_height="50dp"
             android:layout_weight="1"
             android:background="@android:color/transparent"
-            android:hint="Enter text"
+            android:hint="Search"
             android:textColor="@color/black"
             android:textSize="18sp" />
 
@@ -60,59 +60,209 @@
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewPager"
-        android:layout_width="384dp"
-        android:layout_height="149dp"
+        android:layout_width="386dp"
+        android:layout_height="140dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
 
+        android:background="#CFCACA"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.39"
+        app:layout_constraintHorizontal_bias="0.448"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.452" />
+        app:layout_constraintVertical_bias="0.415" />
 
     <me.relex.circleindicator.CircleIndicator3
         android:id="@+id/circleIndicator"
-        android:layout_width="50dp"
-        android:layout_height="20dp"
+        android:layout_width="51dp"
+        android:layout_height="15dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:background="#E6D2D2"
-        tools:layout_editor_absoluteX="152dp"
-        tools:layout_editor_absoluteY="467dp" />
+        android:layout_marginBottom="18dp"
+        android:background="#CFCACA"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.523" />
 
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="109dp"
-        android:layout_height="116dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:background="#E6D2D2"
-        android:fontFamily="serif-monospace"
-        android:text="Enjoy Best Deals!!!"
-        android:textSize="30sp"
-        tools:layout_editor_absoluteX="293dp"
-        tools:layout_editor_absoluteY="487dp" />
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="409dp"
+        android:layout_height="337dp"
+        android:overScrollMode="never"
+        android:scrollbars="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
 
-    <ImageView
-        android:id="@+id/catalogue_item_1"
-        android:layout_width="263dp"
-        android:layout_height="115dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:background="#E6D2D2"
-        android:src="@drawable/iris_1"
-        tools:layout_editor_absoluteX="30dp"
-        tools:layout_editor_absoluteY="488dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="396dp"
+                android:layout_height="122dp"
+                android:layout_margin="5dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="5dp">
+
+                <ImageView
+                    android:id="@+id/imageView4"
+                    android:layout_width="254dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="left"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/image_8_11" />
+
+                <TextView
+                    android:id="@+id/textView10"
+                    android:layout_width="133dp"
+                    android:layout_height="63dp"
+                    android:layout_gravity="right"
+                    android:text="BMW AR-3 50$/day"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/button3"
+                    android:layout_width="137dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|right|center_horizontal"
+
+                    android:background="#4B1CB8"
+                    android:text="View" />
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="396dp"
+                android:layout_height="122dp"
+                android:layout_margin="5dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="5dp">
+
+                <ImageView
+                    android:id="@+id/imageView5"
+                    android:layout_width="254dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="left"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/rav_4_11" />
+
+                <TextView
+                    android:id="@+id/textView11"
+                    android:layout_width="133dp"
+                    android:layout_height="63dp"
+                    android:layout_gravity="right"
+                    android:text="Toyota E-5 50$/day"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/button4"
+                    android:layout_width="137dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|right|center_horizontal"
+
+                    android:background="#4B1CB8"
+                    android:text="View" />
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="396dp"
+                android:layout_height="122dp"
+                android:layout_margin="5dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="5dp">
+
+                <ImageView
+                    android:id="@+id/imageView6"
+                    android:layout_width="254dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="left"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/image_8_12" />
+
+                <TextView
+                    android:id="@+id/textView12"
+                    android:layout_width="133dp"
+                    android:layout_height="63dp"
+                    android:layout_gravity="right"
+                    android:text="Mercedes 50$/day"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/button5"
+                    android:layout_width="137dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|right|center_horizontal"
+
+                    android:background="#4B1CB8"
+                    android:text="View" />
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="396dp"
+                android:layout_height="122dp"
+                android:layout_margin="5dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="5dp">
+
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="254dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="left"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/image_8_1" />
+
+                <TextView
+                    android:id="@+id/textView8"
+                    android:layout_width="133dp"
+                    android:layout_height="63dp"
+                    android:layout_gravity="right"
+                    android:text="Hyundai 50$/day"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/button2"
+                    android:layout_width="137dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|right|center_horizontal"
+
+                    android:background="#4B1CB8"
+                    android:text="View" />
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/button12"
+        android:layout_width="124dp"
+        android:layout_height="58dp"
+        android:background="#4B1CB8"
+        android:text="Logout"
+        app:layout_constraintBottom_toBottomOf="@+id/scrollView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.905"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.071" />
 
 
     <!-- Add more items as needed -->
