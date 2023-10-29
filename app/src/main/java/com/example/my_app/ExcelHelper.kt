@@ -18,11 +18,11 @@ object ExcelHelper {
         val file = File(context.filesDir, USER_INFO_FILE_NAME)
         if (!file.exists()) {
             // Add field names to userData
-            val userDataWithFields = listOf("First Name", "Last Name", "Email", "Password", "Age", "Address", "License Number")
-            writeToExcel(context, userDataWithFields, USER_INFO_FILE_NAME)
+            //val userDataWithFields = listOf("First Name", "Last Name", "Email", "Password", "Age", "Address", "License Number")
+            writeToExcel(context, userData, USER_INFO_FILE_NAME)
         } else {
             // The file already exists, don't add field names again
-            writeToExcel(context, userData, USER_INFO_FILE_NAME)
+            return writeToExcel(context, userData, USER_INFO_FILE_NAME)
         }
     }
 
