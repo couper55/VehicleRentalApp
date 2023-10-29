@@ -12,6 +12,7 @@ import android.widget.Toast
 import java.io.IOException
 import java.io.OutputStreamWriter
 import kotlin.random.Random
+import com.example.my_app.ExcelHelper
 
 class newaccount : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,7 +51,7 @@ class newaccount : AppCompatActivity() {
                 startActivity(intent)
                 val userData = listOf(firstname.text.toString(),lastname.text.toString(),email.text.toString(),password.text.toString(),
                     age.text.toString(),address.text.toString(),license.text.toString())
-                ExcelHelper.writeToUserInfoExcel(this, userData)
+                ExcelHelper.writeToUserInfoCSV(this, userData)
             }
         }
     }

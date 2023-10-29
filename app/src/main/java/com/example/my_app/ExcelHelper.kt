@@ -1,56 +1,42 @@
 package com.example.my_app
 
 import android.content.Context
-import org.apache.poi.ss.usermodel.Cell
-import org.apache.poi.ss.usermodel.Row
-import org.apache.poi.ss.usermodel.Sheet
-import org.apache.poi.ss.usermodel.Workbook
-import org.apache.poi.xssf.usermodel.XSSFWorkbook
 import java.io.File
-import java.io.FileInputStream
-import java.io.FileOutputStream
+import java.io.FileWriter
+import java.io.PrintWriter
 
 object ExcelHelper {
-    private const val USER_INFO_FILE_NAME = "userinfo.xlsx"
+    private const val USER_INFO_FILE_NAME = "userinfo.csv"
 
-    fun writeToUserInfoExcel(context: Context, userData: List<String>) {
-        // Add field names to userData
+    fun writeToUserInfoCSV(context: Context, userData: List<String>) {
         val file = File(context.filesDir, USER_INFO_FILE_NAME)
         if (!file.exists()) {
-            // Add field names to userData
-            //val userDataWithFields = listOf("First Name", "Last Name", "Email", "Password", "Age", "Address", "License Number")
-            writeToExcel(context, userData, USER_INFO_FILE_NAME)
+            writeToCSV(context, userData, USER_INFO_FILE_NAME)
         } else {
-            // The file already exists, don't add field names again
-            return writeToExcel(context, userData, USER_INFO_FILE_NAME)
+            return writeToCSV(context, userData, USER_INFO_FILE_NAME)
         }
     }
 
-
-    fun readUserInfoFromExcel(context: Context): List<String> {
-        return readFromExcel(context, USER_INFO_FILE_NAME)
+    fun readUserInfoFromCSV(context: Context): List<String> {
+        return readFromCSV(context, USER_INFO_FILE_NAME)
     }
 
-
-    private fun readFromExcel(context: Context, fileName: String): List<String> {
+    private fun readFromCSV(context: Context, fileName: String): List<String> {
         val userDataList = mutableListOf<String>()
 
         try {
             val file = File(context.filesDir, fileName)
             if (file.exists()) {
-                val fis = FileInputStream(file)
-                val workbook: Workbook = XSSFWorkbook(fis)
-                val sheet: Sheet = workbook.getSheetAt(0)
+                val bufferedReader = file.bufferedReader()
 
-                for (row: Row in sheet) {
-                    val userData = StringBuilder()
-                    for (cell: Cell in row) {
-                        userData.append(cell.toString()).append(",")
-                    }
-                    userDataList.add(userData.toString())
+                // Read the header line (field names) and discard it
+                bufferedReader.readLine()
+
+                bufferedReader.forEachLine {
+                    userDataList.add(it)
                 }
-                workbook.close()
-                fis.close()
+
+                bufferedReader.close()
             }
         } catch (e: Exception) {
             e.printStackTrace()
@@ -59,40 +45,26 @@ object ExcelHelper {
         return userDataList
     }
 
-    private fun writeToExcel(context: Context, data: List<String>, fileName: String) {
+    private fun writeToCSV(context: Context, data: List<String>, fileName: String) {
         try {
             val file = File(context.filesDir, fileName)
-            val workbook: Workbook
-            val sheet: Sheet
-            if (file.exists()) {
-                val fis = FileInputStream(file)
-                workbook = XSSFWorkbook(fis)
-                sheet = workbook.getSheetAt(0)
-            } else {
-                workbook = XSSFWorkbook()
-                sheet = workbook.createSheet()
+
+            val isNewFile = !file.exists()
+
+            val printWriter = PrintWriter(FileWriter(file, true))
+
+            // Add field names if it's a new file
+            if (isNewFile) {
+                val header = data.joinToString(",")
+                printWriter.println(header)
             }
 
-            // Only add field names if the sheet is empty
-            if (sheet.lastRowNum.toLong() == -1L) {
-                val headerRow = sheet.createRow(0)
-                for (i in data.indices) {
-                    val cell: Cell = headerRow.createCell(i)
-                    cell.setCellValue(data[i])
-                }
-            }
+            // Append data
+            val dataLine = data.joinToString(",")
+            printWriter.println(dataLine)
 
-            val rowCount = sheet.lastRowNum + 1
-            val row = sheet.createRow(rowCount)
-            for (i in data.indices) {
-                val cell: Cell = row.createCell(i)
-                cell.setCellValue(data[i])
-            }
+            printWriter.close()
 
-            val fos = FileOutputStream(file)
-            workbook.write(fos)
-            fos.close()
-            workbook.close()
         } catch (e: Exception) {
             e.printStackTrace()
         }

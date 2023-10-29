@@ -43,7 +43,7 @@ class SignUp : AppCompatActivity() {
         }
     }
      fun checkCredentials(email: String, password: String): Boolean {
-        val userInfo = ExcelHelper.readUserInfoFromExcel(this)
+        val userInfo = ExcelHelper.readUserInfoFromCSV(this)
 
         // Loop through the userInfo to check if the email and password match
         for (userData in userInfo) {
